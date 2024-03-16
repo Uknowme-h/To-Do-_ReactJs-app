@@ -6,6 +6,7 @@ import "./App.css";
 function App() {
   const [alertvisible, setalert] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [style, setstyle] = useState("list");
   const handleInputChange = (value: SetStateAction<string>) => {
     setInputValue(value);
   };
@@ -15,14 +16,27 @@ function App() {
       {alertvisible && <Dropdown onclose={() => setalert(false)}></Dropdown>}
       <Inputs
         onClick={() => {
-          setalert(true);
+          if (alertvisible == false) {
+            setalert(true);
+          } else {
+            setalert(false);
+          }
         }}
         onInputChange={handleInputChange}
       ></Inputs>
 
-      <div id="list">
+      <div id={style}>
         <ul>
-          <li>{inputValue}</li>
+          <li
+            onClick={() => {
+              if (style == "list") setstyle("completed");
+              else {
+                setstyle("list");
+              }
+            }}
+          >
+            {inputValue}
+          </li>
         </ul>
       </div>
     </div>

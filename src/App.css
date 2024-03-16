@@ -1,7 +1,8 @@
 body {
   display: flex;
   justify-content: center;
-  background-image: url("https://www.w3schools.com/w3images/lights.jpg");
+  /* background-image: url("https://www.w3schools.com/w3images/lights.jpg"); */
+  background-color: rgb(122, 144, 163);
   background-repeat: no-repeat;
   background-size: cover;
 }

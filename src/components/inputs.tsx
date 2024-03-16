@@ -15,15 +15,14 @@ function inputs({ onClick, onInputChange, onAddTask }: props) {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
     if (onInputChange) {
-      onInputChange(event.target.value); // Call the prop function
+      onInputChange(event.target.value);
     }
   };
   const handleAddTask = (onAddTask: ((value: String) => void) | undefined) => {
-    // Handle adding the task to your todo list logic here (optional)
     console.log("Add Task:", inputText);
-    setInputText(""); // Clear input field after adding task (optional)
+    setInputText("");
     if (onAddTask) {
-      onAddTask(inputText); // Call the prop function with input value
+      onAddTask(inputText);
     }
   };
   return (

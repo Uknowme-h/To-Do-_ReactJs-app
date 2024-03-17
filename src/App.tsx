@@ -2,14 +2,12 @@ import { SetStateAction, useState } from "react";
 import Dropdown from "./components/Dropdown";
 import Inputs from "./components/inputs";
 import "./App.css";
+import inputs from "./components/inputs";
 
 function App() {
   const [alertvisible, setalert] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [style, setstyle] = useState("list");
-  const handleInputChange = (value: SetStateAction<string>) => {
-    setInputValue(value);
-  };
   return (
     <div id="card">
       <h1 id="heading">TO-DO LIST</h1>
@@ -22,10 +20,9 @@ function App() {
             setalert(false);
           }
         }}
-        onInputChange={handleInputChange}
       ></Inputs>
 
-      <div id={style}>
+      {/* <div id={style}>
         <ul>
           <li
             onClick={() => {
@@ -38,7 +35,7 @@ function App() {
             {inputValue}
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }

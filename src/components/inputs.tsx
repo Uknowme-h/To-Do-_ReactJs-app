@@ -1,58 +1,86 @@
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface props {
   onClick?: () => void;
-  onInputChange?: (value: string) => void;
-  onAddTask?: (value: String) => void;
 }
 
-function inputs({ onClick, onInputChange, onAddTask }: props) {
-  const [inputText, setInputText] = useState("");
+function inputs({ onClick }: props) {
+  const [value, setvalue] = useState("");
+  const [todo, settodo] = useState<string[]>([]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputText(event.target.value);
-    if (onInputChange) {
-      onInputChange(event.target.value);
+  const handletask = () => {
+    console.log(todo);
+    if (value !== "") {
+      settodo([...todo, value]);
+      setvalue("");
     }
   };
-  const handleAddTask = (onAddTask: ((value: String) => void) | undefined) => {
-    console.log("Add Task:", inputText);
-    setInputText("");
-    if (onAddTask) {
-      onAddTask(inputText);
-    }
-  };
+
+  useEffect(() => {
+    console.log(todo);
+  }, [todo]);
+
+  const [style, setstyle] = useState("list");
   return (
-    <div id="inputs">
-      <input
-        type="text"
-        placeholder="Enter your todo list"
-        value={inputText}
-        onChange={handleInputChange}
-      ></input>
-      <button
-        type="button"
-        id="icons"
-        className="btn btn-secondary"
-        onClick={() => handleAddTask(onAddTask)}
-      >
-        ADD TASKS &nbsp;
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
+    <div>
+      <div id="inputs">
+        <input
+          type="text"
+          placeholder="Enter your todo list"
+          value={value}
+          onChange={(e) => {
+            setvalue(e.target.value);
+          }}
+        ></input>
+        <button
+          type="button"
+          id="icons"
+          className="btn btn-secondary"
+          onClick={() => handletask()}
+        >
+          ADD TASKS &nbsp;
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
 
-      <button
-        className="btn btn-secondary dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="true"
-        id="dropdown"
-        onClick={onClick}
-      >
-        Filter
-      </button>
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="true"
+          id="dropdown"
+          onClick={onClick}
+        >
+          Filter
+        </button>
+      </div>
+      <div className="todo" id={style}>
+        <div className="card-body">
+          <ul>
+            {todo.map((todos, index) => {
+              return (
+                <li
+                  onClick={() => {
+                    if (style == "list") setstyle("completed");
+                    else {
+                      setstyle("list");
+                    }
+                  }}
+                  key={index}
+                >
+                  {todos}
+                </li>
+              );
+            })}
+          </ul>
+
+          <a href="#" className="btn btn-primary">
+            Mark as complete
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

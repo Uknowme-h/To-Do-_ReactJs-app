@@ -56,29 +56,21 @@ function inputs({ onClick }: props) {
           Filter
         </button>
       </div>
-      <div className="todo" id={style}>
+      <div className="todo">
         <div className="card-body">
           <ul>
             {todo.map((todos, index) => {
+              const handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
+                event.currentTarget.classList.toggle("completed");
+              };
+
               return (
-                <li
-                  onClick={() => {
-                    if (style == "list") setstyle("completed");
-                    else {
-                      setstyle("list");
-                    }
-                  }}
-                  key={index}
-                >
+                <li className={style} onClick={handleClick} key={index}>
                   {todos}
                 </li>
               );
             })}
           </ul>
-
-          <a href="#" className="btn btn-primary">
-            Mark as complete
-          </a>
         </div>
       </div>
     </div>

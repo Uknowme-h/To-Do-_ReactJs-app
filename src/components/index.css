@@ -96,40 +96,23 @@ button {
   font-size: 30px;
   color: rgb(8, 8, 8);
 }
-#list {
-  padding: 0;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  color: rgb(11, 9, 9);
-  border: 1px solid #ccc;
-  z-index: 1;
-}
-#list ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-#completed ul li {
-  padding: 0;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  color: rgb(11, 9, 9);
-  border: 1px solid #ccc;
-  z-index: 1;
-  text-decoration: line-through;
-}
-#completed ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
 
-.todo {
-  width: 18rem;
+.list {
+  list-style-type: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+.completed {
+  text-decoration: line-through;
+  list-style-type: none;
+  margin-top: 10;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  z-index: 1;
 }

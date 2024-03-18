@@ -21,21 +21,6 @@ function App() {
           }
         }}
       ></Inputs>
-
-      {/* <div id={style}>
-        <ul>
-          <li
-            onClick={() => {
-              if (style == "list") setstyle("completed");
-              else {
-                setstyle("list");
-              }
-            }}
-          >
-            {inputValue}
-          </li>
-        </ul>
-      </div> */}
     </div>
   );
 }

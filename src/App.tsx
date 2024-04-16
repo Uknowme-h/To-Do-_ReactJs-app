@@ -6,8 +6,6 @@ import inputs from "./components/inputs";
 
 function App() {
   const [alertvisible, setalert] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [style, setstyle] = useState("list");
   return (
     <div id="card">
       <h1 id="heading">TO-DO LIST</h1>

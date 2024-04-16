@@ -2,18 +2,16 @@ import { ReactNode } from "react";
 import "./Alert.css";
 
 interface Props {
-  children: ReactNode;
   onClose: () => void;
 }
-const Alert = ({ children, onClose }: Props) => {
+const Alert = ({ onClose }: Props) => {
   return (
     <div
       className="alert alert-warning alert-dismissible fade show"
       role="alert"
       id="alert"
     >
-      <strong>{children}</strong> You should check in on some of those fields
-      below.
+      <strong>Alert!</strong> Please enter a task!.
       <button
         type="button"
         className="btn-close"

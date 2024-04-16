@@ -2,6 +2,7 @@ import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import Alert from "./Alert";
 
 interface props {
   onClick?: () => void;
@@ -10,12 +11,15 @@ interface props {
 function inputs({ onClick }: props) {
   const [value, setvalue] = useState("");
   const [todo, settodo] = useState<string[]>([]);
+  const [alert, setalert] = useState(false);
 
   const handletask = () => {
     console.log(todo);
     if (value !== "") {
       settodo([...todo, value]);
       setvalue("");
+    } else {
+      setalert(true);
     }
   };
 
@@ -24,6 +28,7 @@ function inputs({ onClick }: props) {
   }, [todo]);
 
   const [style, setstyle] = useState("list");
+  const [bool, setbool] = useState(true);
   return (
     <div>
       <div id="inputs">
@@ -58,10 +63,13 @@ function inputs({ onClick }: props) {
       </div>
       <div className="todo">
         <div className="card-body">
+          {alert && <Alert onClose={() => setalert(false)} />}
           <ul>
             {todo.map((todos, index) => {
               const handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
                 event.currentTarget.classList.toggle("completed");
+                setbool(false);
+                console.log(event.currentTarget.innerText);
               };
 
               return (

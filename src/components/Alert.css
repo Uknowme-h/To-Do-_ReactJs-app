@@ -4,6 +4,8 @@
   font-weight: bold;
   text-align: center;
   height: max-content;
-  width: 50%;
+  width: 70%;
   margin: auto;
+  margin-top: 10px;
+  background: transparent;
 }
